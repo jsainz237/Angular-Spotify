@@ -5,17 +5,14 @@ const client_secret = keys.client_secret;
 const express = require('express');
 const router = express.Router();
 
-const fetch = require('node-fetch');
 const request = require('request');
-
-let token;
 
 // your application requests authorization
 var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     //method: 'POST',
     headers: {
-        'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
     },
     form: {
         grant_type: 'client_credentials'
@@ -38,7 +35,7 @@ function retrieveToken() {
 
 router.get('/', (req, res) => {
     (async () => {
-        let token = await retrieveToken();
+        token = await retrieveToken();
         //let token = data.access_token;
         //console.log(data)
         res.status(200).json({

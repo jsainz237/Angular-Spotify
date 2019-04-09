@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const getTokenRoute = require('./routes/getToken');
+const searchRoute = require('./routes/searchArtist');
 
 app.use( (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -17,6 +18,7 @@ app.use( (req, res, next) => {
 })
 
 app.use('/token', getTokenRoute);
+app.use('/search', searchRoute);
 
 app.use((req, res, next) => {
     const error = new Error("Not Found");
