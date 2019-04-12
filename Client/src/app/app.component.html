@@ -3,6 +3,13 @@
     <input type='text' [(ngModel)]='artist' (keyup.enter)='searchForArtist()' placeholder="Artist Name">
     <p *ngIf='noInput'>Please enter an artist name</p>
   </div>
+
+  <app-card *ngFor='let artist of items'
+    [artist]='artist.name'
+    [imageURL]='artist.images.length === 0 ? null : artist.images[0].url'
+    [id]='artist.id'
+    [artistURL]='artist.external_urls.spotify'>
+  </app-card>
 </div>
 
 <router-outlet></router-outlet>

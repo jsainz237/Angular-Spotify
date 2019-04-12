@@ -25,8 +25,8 @@ export class AppComponent {
       return;
     } else { this.noInput = false; }
     let artistQ = this.artist
-    this.data.searchArtist(artistQ).subscribe(data => {
-      this.items = data['artists']['items'];
+    this.data.searchArtist(artistQ).subscribe(async data => {
+      this.items = await data['artists']['items'];
       console.log(this.items);
     })
   }
