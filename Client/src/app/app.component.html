@@ -1,0 +1,8 @@
+<div class='container'>
+  <div class='search-bar'>
+    <input type='text' [(ngModel)]='artist' (keyup.enter)='searchForArtist()' placeholder="Artist Name">
+    <p *ngIf='noInput'>Please enter an artist name</p>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
